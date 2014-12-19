@@ -2,6 +2,36 @@
     overflow: hidden; 
 }
 
+/* Small devices (tablets, 768px and up) */
+@media only screen and (max-width: @screen-sm-min) { 
+    #title {
+        font-size: 25%;
+        color: #000;
+        display: none;
+    }
+    col-md-3, .logostrip{
+           background-color: red;
+        display: none;
+    }
+}
+
+/* Small devices (tablets, 768px and up) */
+@media (min-width: @screen-sm-min) { 
+    p1, .title {
+        font-size: 250%;
+        color: #f00b0b;
+        display: none;
+    }
+}
+
+/* Medium devices (desktops, 992px and up) */
+@media only screen and (min-width: @screen-md-min) {  
+    body{
+       background-color: red; 
+        display: none;
+    } 
+}
+
 
 @font-face {
     font-family: 'Quicksand';
@@ -12,15 +42,35 @@
 }
 
 p1 {
-     font-family: 'Quicksand', sans-serif;
-     font-size: 40px;
+    font-family: 'Quicksand', sans-serif;
+    font-size: 250%;
+    align-self: center;
+    color: #FFFFFF;
+}
+
+p2 {
+    font-family: 'Quicksand', sans-serif;
+    font-size: 20px;
     align-self: center;
     color: #000000;
 }
 
-p2 {
-       font-family: 'Quicksand', sans-serif;
-     font-size: 20px;
-    align-self: center;
-    color: #000000;
+.logostrip{
+    padding-top: 2%;
+    background-color: rgba(17, 160, 66, 0.92); 
+    height: 100%;
+}
+
+.header{
+    background-color: #d3d3d3; 
+    height: 10%;
+}
+
+#logo{
+    max-width: 50px;
+    max-height: 50px;
+    min-width: 20px;
+    min-height: 20px;
+    width: 50%;
+    height: 50%;
 }
