@@ -2,37 +2,6 @@
     overflow: hidden; 
 }
 
-/* Small devices (tablets, 768px and up) */
-@media only screen and (max-width: @screen-sm-min) { 
-    #title {
-        font-size: 25%;
-        color: #000;
-        display: none;
-    }
-    col-md-3, .logostrip{
-           background-color: red;
-        display: none;
-    }
-}
-
-/* Small devices (tablets, 768px and up) */
-@media (min-width: @screen-sm-min) { 
-    p1, .title {
-        font-size: 250%;
-        color: #f00b0b;
-        display: none;
-    }
-}
-
-/* Medium devices (desktops, 992px and up) */
-@media only screen and (min-width: @screen-md-min) {  
-    body{
-       background-color: red; 
-        display: none;
-    } 
-}
-
-
 @font-face {
     font-family: 'Quicksand';
     src: url('../assets/Quicksand_Bold.otf');
@@ -52,7 +21,7 @@ p2 {
     font-family: 'Quicksand', sans-serif;
     font-size: 20px;
     align-self: center;
-    color: #000000;
+    color: #FFFFFF;
 }
 
 .logostrip{
@@ -73,4 +42,25 @@ p2 {
     min-height: 20px;
     width: 50%;
     height: 50%;
+}
+
+
+span.hover-text {
+  background: rgba(0,0,0,0.5);
+  color: white;
+  cursor: pointer;
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  opacity: 0;
+  -webkit-transition: opacity 500ms;
+  -moz-transition: opacity 500ms;
+  -o-transition: opacity 500ms;
+  transition: opacity 500ms;
+}
+ 
+span.hover-text:hover {
+    opacity: 1;
 }
