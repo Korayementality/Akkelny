@@ -11,11 +11,12 @@ var modalContent =
 
 
 var pageElement =   
-    '<div class="col-md-7 col-sm-12 col-xs-12 text-center">' +
-        '<div onclick="displayModal()" data-toggle="modal" data-target="#modal" class="col-md-5 col-sm-4 col-xs-12" style="background color: white; margin:1%;">' +
-        '<img src="%imagepath%" alt="" class="img-responsive" style="max-height:200px; width:100%"> '+
+        '<div class="col-md-2">' +
+        '<div onclick="displayModal()" data-toggle="modal" data-target="#modal" class="col-md-10" style="background color: white; margin:1%;">' +
+        '<img src="%imagepath%" alt="" class="img-responsive" style="max-height:300px; width:100%"> '+
         '<span class="hover-text"><div style="height: 80%"></div><p2>%name%</p2></span>' +
-    '</div>';
+        '</div>'+
+        '<div class="col-md-2 col-md-offset-4"></div>';
 
 
 
@@ -24,8 +25,12 @@ var itemArray = [
     ];
 
 var restaurantArray = [
-        {name: "McDonald's", imagepath:"../images/items/mcdonalds-Big-Tasty.png"},
-        {name: "McDonald's", imagepath:"../images/items/mcdonalds-Big-Tasty.png"}
+        {name: "McDonald's", imagepath:"../images/Pizza-Hut-is-Back-in-SA.png"},
+        {name: "McDonald's", imagepath:"../images/McDonalds logo.jpg"},
+        {name: "hihihi", imagepath:"../images/McDonalds logo.jpg"},
+        {name: "hihihi", imagepath:"../images/McDonalds logo.jpg"},
+        {name: "hihihi", imagepath:"../images/McDonalds logo.jpg"}
+    
     ];
 
 
@@ -46,8 +51,8 @@ function displayPage() {
     for(var i = 0; i < restaurantArray.length; i++)
     {
         var item = makePage(pageElement, restaurantArray[i].name, restaurantArray[i].imagepath);
-        document.getElementById('pageContent').innerHTML += item;
-        //$(pageContent).append(item);
+        //document.getElementById('pageContent').innerHTML += item;
+        $(pageContent).append(item);
     }
     
 }
@@ -73,5 +78,11 @@ function makePage(content, name, imagepath) {
     currentContent = currentContent.replace("%name%", name);
 
     return currentContent;
+    
+}
+
+function Search() {
+ 
+    return document.getElementById("search").value;
     
 }

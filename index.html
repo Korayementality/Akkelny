@@ -33,32 +33,27 @@
             
         </div>
         
-                                            <!-- Little white space :) -->
+                                            <!-- Search Bar -->
         
         <div class="row" style="height: 60px"> 
             <div class="col-md-4 col-md-offset-7">
                 <div class="input-group">
-                    <input type="text" class="form-control " Placeholder="Search">
+                    <input id="search" type="text" class="form-control " Placeholder="Search" value="">
                     <span class="input-group-btn">
-                        <button class="btn btn-confirm" type="button"><p2>Go!</p2></button>
+                        <button class="btn btn-confirm" type="button" onclick="Search()"><p2>Go!</p2></button>
                     </span>
                 </div>
             </div>
         </div>
         
         
-                                            <!-- Categories side menu -->
+                                        <!-- ITEMS BEING DIPLAYED -->
         
         <div class="row">
-           
             
-                                            <!-- ITEMS BEING DIPLAYED -->
+            <div class="row" id="pageContent"></div>
             
-            <div class="col-md-8 col-sm-12 col-xs-12  col-sm-offset-1 text-center" id="pageContent">
-                
-            </div>           
-            <div class="col-md-4">
-            </div>
+            
         </div>
 
 <!-- Modal -->
@@ -67,7 +62,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-        <p4 class="modal-title" id="myModalLabel">McDonald's</p4>
+        <p4 class="modal-title" id="myModalLabel">LEL</p4>
       </div>
       <div class="modal-body" id="currentModal">
       </div>
