@@ -12,7 +12,7 @@ var modalContent =
 
 var pageElement =   
         '<div class="col-md-2">' +
-        '<div onclick="displayModal()" data-toggle="modal" data-target="#modal" class="col-md-10" style="background color: white; margin:1%;">' +
+        '<div id="%id%" data-toggle="modal" data-target="#modal" class="col-md-10" style="background color: white; margin:1%;">' +
         '<img src="%imagepath%" alt="" class="img-responsive" style="max-height:300px; width:100%"> '+
         '<span class="hover-text"><div style="height: 80%"></div><p2>%name%</p2></span>' +
         '</div>'+
@@ -20,69 +20,87 @@ var pageElement =
 
 
 
-var itemArray = [
-        {name: "Big Tasty", desc:"30", imagepath:"../images/items/mcdonalds-Big-Tasty.png"}
-    ];
+//restaurants array
+var restaurants_array = [];
 
-var restaurantArray = [
-        {name: "McDonald's", imagepath:"../images/Pizza-Hut-is-Back-in-SA.png"},
-        {name: "McDonald's", imagepath:"../images/McDonalds logo.jpg"},
-        {name: "hihihi", imagepath:"../images/McDonalds logo.jpg"},
-        {name: "hihihi", imagepath:"../images/McDonalds logo.jpg"},
-        {name: "hihihi", imagepath:"../images/McDonalds logo.jpg"}
-    
-    ];
+$(document).ready(
+    function(){
+        //AJAX call to fetch random restaurants
+        
+        //search text field
+        var search_text = $('#search-text');
+        
+        //search button listener
+        $('#search-button').click(function(){
+            var search_val = search_text.val();
+            
+            restaurants_array = [];
+            var restaurantUrl = "http://azizapp.eu5.org/Akkelny/fetch_restaurants.php?search="+search_val;
+            displayPage(restaurantUrl, function(restaurants_array){
+                $(pageContent).empty();
+                for(var i = 0; i < restaurants_array.length; i++)
+                {
+                    var item = makePage(pageElement, i, restaurants_array[i].name, restaurants_array[i].imagepath);
+                    $(pageContent).append(item);
+                    
+                    $('#'+i).data('modalData', {array: restaurants_array[i].food, name: restaurants_array[i].name});
+                    $('#'+i).click(function(){
+                        var data = $(this).data('modalData');
+                        $('#myModalLabel').text(data.name);
+                        displayModal(data.array);
+                    });
+                }
+            });
+        });
 
+    });
 
 function displayModal() {
     
     $(currentModal).empty();
-    
-    for(var i = 0; i < itemArray.length; i++)
+    var array = [];
+    if(arguments.length == 1){
+        array = arguments[0];
+    }
+    for(var i = 0; i < array.length; i++)
     {
-        var item = makeItem(modalContent, itemArray[i].imagepath, itemArray[i].name, itemArray[i].counter_id, itemArray[i].desc);
+        console.log(array[0].imagepath);
+        var item = makeItem(modalContent, array[i].imagepath, array[i].name ,array[i].description);
         $(currentModal).append(item);
     }
 }
 
-function displayPage() {
-    
-    $(pageContent).empty();
-    for(var i = 0; i < restaurantArray.length; i++)
-    {
-        var item = makePage(pageElement, restaurantArray[i].name, restaurantArray[i].imagepath);
-        //document.getElementById('pageContent').innerHTML += item;
-        $(pageContent).append(item);
-    }
-    
+function displayPage(restaurantUrl, callback) {
+    //AJAX call to fetch search restaurant
+    $.getJSON(restaurantUrl, function (data){
+
+        for(var i=0 ; i<data.length ; i++){
+            restaurants_array[i] = {id: data[i].id, name: data[i].name, imagepath: data[i].imagepath, food: data[i].food};
+        }
+        callback(restaurants_array);
+    }); 
 }
 
-function makeItem(content, imagepath, name, counter_id, description){
+function makeItem(content, imagepath, name, description){
     
     var currentContent = content;
-          
+      
     currentContent = currentContent.replace("%imagepath%", imagepath);
     currentContent = currentContent.replace("%name%", name);
     currentContent = currentContent.replace("%description%", description);
-    currentContent = currentContent.replace("%counter_id%", counter_id);
     
     return currentContent;
     
 }
 
-function makePage(content, name, imagepath) {
+function makePage(content, id, name, imagepath) {
     
     var currentContent = content;
-          
+    
+    currentContent = currentContent.replace("%id%", id);      
     currentContent = currentContent.replace("%imagepath%", imagepath);
     currentContent = currentContent.replace("%name%", name);
 
     return currentContent;
-    
-}
-
-function Search() {
- 
-    return document.getElementById("search").value;
     
 }
