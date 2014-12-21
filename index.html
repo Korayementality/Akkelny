@@ -16,7 +16,7 @@
     <div class="container-fluid">
                                         <!-- HEADER -->
         <div class="row header">
-            <div class="col-md-2 col-sm-2 col-xs-2 col-md-offset-1 col-sm-offset-1 col-xs-offset-1 logostrip text-center">   
+            <div class="col-xs-2 col-xs-offset-1 logostrip text-center">   
                   <div class="row">
                     <img id="logo"  src="images/burger-huge-512.png">  
                   </div>
@@ -25,35 +25,38 @@
                     <p1 class="title">Akkelny</p1>
                   </div>
             </div>
+            <div class="col-xs-1 col-xs-offset-1" style="margin-top: 5%">
+                <a href=""><p3>Home</p3></a>
+            </div>
+            <div class="col-xs-1" style="margin-top: 5%">
+                <a href=""><p3>Contacts</p3></a>
+            </div>
         </div>
         <div class="row">
-            <div class="col-md-2 col-sm-2 col-xs-2  col-md-offset-1 col-sm-offset-1 col-xs-offset-1 logostrip" 
-                 style="background-color: #3a9557; height: 50px;">
+            <div class="col-xs-2 col-xs-offset-1 logostrip" 
+                 style="background-color: #3a9557; height: 50px">
             </div>
             
-        </div>
-        
                                             <!-- Search Bar -->
-        
-        <div class="row" style="height: 60px"> 
-            <div class="col-md-4 col-md-offset-7">
-                <div class="input-group">
-                    <input id="search-text" type="text" class="form-control " Placeholder="Search" value="">
+            <div class="col-xs-6 col-xs-offset-2">
+                <div class="input-group" style="height: 50px; margin-top: 5%">
+                    <input id="search-text" type="text" class="form-control" style="height: 100%;" placeholder="Search" value="">
                     <span class="input-group-btn">
-                        <button id="search-button" class="btn btn-confirm" type="button"><p2>Go!</p2></button>
+                        <button id="search-button" class="btn btn-confirm" style="height: 100%; margin-top: -22%" type="button"><p2>Go!</p2></button>
                     </span>
                 </div>
             </div>
         </div>
-        
-        
+    <hr/>
                                         <!-- ITEMS BEING DIPLAYED -->
         
-        <div class="row">
             
-            <div class="row" id="pageContent"></div>
-            
-            
+        <div class="row" >
+
+            <div id="pageContent" class="text-center col-md-10 col-xs-11 col-md-offset-2 col-xs-offset-1">
+
+            </div>                
+
         </div>
 
 <!-- Modal -->
@@ -65,6 +68,7 @@
         <p4 class="modal-title" id="myModalLabel">LEL</p4>
       </div>
       <div class="modal-body" id="currentModal">
+          
       </div>
       <div class="modal-footer">
         <button type="button" class="btn-cancel btn-lg" data-dismiss="modal"><p2>Close</p2></button>
